@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  packet-sounds:
+    image: marrold/packet-sounds
+    container_name: packet-sounds
+    restart: always
+    ipc: host
+    devices:
+      - /dev/snd
+    environment:
+      - PLAYBACK_DEVICE=plughw:CARD=Device_1,DEV=0
+
+
