@@ -7,7 +7,7 @@ audio_dir="./sounds"
 audio_files=("Audio 1.wav" "Audio 2.wav" "Audio 3.wav" "Audio 4.wav" "Audio 5.wav")
 
 # Probability for playing Audio 1.wav (in percentage)
-audio_1_probability=80
+audio_1_probability=90
 
 # Function to generate a random number within a range
 generate_random_number() {
@@ -53,13 +53,13 @@ while true; do
     full_path="$audio_dir/$audio_file"
 
     # Generate a random volume adjustment between -6 and 0 dB
-    volume_adjustment=$(generate_random_number -9 3)
+    volume_adjustment=$(generate_random_number -9 0)
 
     # Convert and adjust the volume of the audio file using sox and play it directly
     sox -q "$full_path" -r $sample_rate -c $channels -t $format - gain -l $volume_adjustment | aplay -D "$playback_device" -r $sample_rate -c $channels -t $format -q
 
     # Generate a random pause duration between 3 and 10 seconds
-    pause_duration=$(generate_random_number 3 10)
+    pause_duration=$(generate_random_number 2 5)
 
     # Pause for the generated duration
     sleep $pause_duration
